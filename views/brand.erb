@@ -1,17 +1,21 @@
 <h1>Brands:</h1>
 
 <form action = "/brand" method = "post">
-  <label for = "brand">Add a brand:</label>
-  <input type = "text" name = "brand">
-  <input type = "number" name = "price">
-  <button type = "submit">Start a new Ekin brand!</button>
+  <div class = "input-group">
+    <label for = "brand">Add a brand: </label>
+    <input type = "text" name = "brand" class = "form-control">
+    <label for = "price">Price: </label>
+    <span class="input-group-addon">$</span>
+    <input type = "text" name = "price" class = "form-control">
+    <button type = "submit" class = "btn btn-success">Start a new Ekin brand!</button>
+  </div>
 </form>
 
 <% if @brands.any? %>
 <p>Click on a brand name to list store availablilty and connect to store:</p>
   <% @brands.each() do |brand| %>
     <h3><a href="/brand/<%= brand.id %>"><%= brand.brand %></a></h3>
-    <p><%= brand.price %></p>
+    <p>$<%=sprintf('%.2f', brand.price)%></p>
   <% end %>
 
 <% else %>
