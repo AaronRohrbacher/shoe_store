@@ -7,8 +7,9 @@
 ## Setup/Installation Requirements
 
 * _Clone this repository_
-* _run your favorite SQL server and run the following command line within the project directory (macOS): `$ rake db:create` followed by $rake `$rake db:migrate`_
+* _run your favorite SQL server and run the following command lines within the project directory (macOS): `$ bundle install`, `$ rake db:create` followed by `$rake db:migrate`_
 * _Run "app.rb" on your favorite Ruby-enabled server, and visit the root directory from your favorite web browser._
+*_Add stores, add shoes, connect shoes to stores, bebop and scat!_
 
 
 | Specification                                      | Input                               | Expected Output                                             |
@@ -20,3 +21,11 @@
 | Display associated store names on a brand page     | Visit the Nonelite brand page       | Ekin store                                                  |
 | Associate multiple brands and stores to each other | Ekin store => Nonelite, Footcrusher | Nonelite => Ekin store. Ekin store => Nonelite, Footcrusher |
 | Capitalizes entries before saving to database      | ekin store                          | Ekin Store                                                  |
+## Support and contact details
+
+_Aaron Rohrbacher: aaronrohrbacher.github.io/portfolio/_
+
+## Technologies Used
+_HTML, CSS, Ruby, and Sinatra. Databases created/used on Postgres using ActiveRecord, and maintained with Rake. Tested with Rspec and Capybara._
+
+Copyright (c) 2017 **_Aaron Rohrbacher_**
