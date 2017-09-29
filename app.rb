@@ -58,7 +58,8 @@ get('/brand') do
 end
 
 post('/brand') do
-  Brand.create(brand: params['brand'], price: params['price'])
+  new_brand = Brand.new(brand: params['brand'], price: params['price'])
+  new_brand.save
   @brands = Brand.all
   erb(:brand)
 end
