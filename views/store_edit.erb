@@ -1,0 +1,12 @@
+<h1><%=@store.store%></h1>
+
+<form action = "/store/<%=@store.id%>" method = "post">
+  <label for="store">Update store name:</label>
+  <input type = "text" name = "store">
+  <button type = "submit">Update <%=@store.store%>
+</form>
+
+<form action="/store/<%=@store.id%>" method="post">
+  <input type = "hidden" name = "_method" value = "delete">
+  <button type = "submit">Permanently close <%=@store.store%>
+</form>
