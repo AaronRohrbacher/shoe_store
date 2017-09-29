@@ -3,8 +3,8 @@ class Brand < ActiveRecord::Base
   has_many :shoes, through: :fronts
   has_many :stores, through: :fronts
 
-  validates(:brand, {:presence => true})
-  validates(:price, {:presence => true})
+  validates :brand, presence: true, uniqueness: {case_sensitive: false}, length: {maximum: 100}
+  validates :price, presence: true
 
   before_save(:upcase_name)
 private
