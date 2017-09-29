@@ -49,6 +49,15 @@ end
 
 get('/brand/:id') do
   @brand = Brand.find(params['id'])
+  @stores = Store.all
   @brand_stores = @brand.stores
+  erb(:brand_edit)
+end
+
+post('/brand/:id') do
+  @brand = Brand.find(params['id'])
+  @brand.stores.push(Store.find(params['store_id']))
+  @brand_stores = @brand.stores
+  @stores = Store.all
   erb(:brand_edit)
 end

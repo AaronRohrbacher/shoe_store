@@ -1,12 +1,23 @@
 <h1><%=@brand.brand%></h1>
+<h3><%=@brand.price%></h3>
+<% if @brand_stores.any? %>
+  <p>Available at:</p>
+  <ul>
+    <% @brand_stores.each do |store| %>
+      <li><%=store.store%></li>
+    <%end%>
+    </ul>
+<% else %>
+  <p> Coming soon to a "lesser-known" shoe store near you! </p>
+<% end %>
 
 <form action = "/brand/<%=@brand.id%>" method = "post">
-  <label for="brand">Update brand name:</label>
-  <input type = "text" name = "brand">
-  <button type = "submit">Update <%=@brand.brand%>
-</form>
+  <label for="brand">Add a store:</label>
+  <select name = "store_id">
+    <% @stores.each do |store| %>
+    <option value = "<%=store.id%>"><%=store.store%></option>
+    <%end%>
+  </select>
 
-<form action="/brand/<%=@brand.id%>" method="post">
-  <input type = "hidden" name = "_method" value = "delete">
-  <button type = "submit">Permanently close <%=@brand.brand%>
+  <button type = "submit">Add store for <%=@brand.brand%></button>
 </form>
