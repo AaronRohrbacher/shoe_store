@@ -12,7 +12,7 @@
 <% end %>
 
 <form action = "/brand/<%=@brand.id%>" method = "post">
-  <label for="brand">Add a store:</label>
+  <label for="store_id">Add a store:</label>
   <select name = "store_id">
     <% @stores.each do |store| %>
     <option value = "<%=store.id%>"><%=store.store%></option>

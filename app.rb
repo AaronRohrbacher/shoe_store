@@ -21,12 +21,18 @@ end
 
 get('/store/:id') do
   @store = Store.find(params['id'])
+
+  @store_brands = @store.brands
+  @brands = Brand.all
   erb(:store_edit)
 end
 
 post('/store/:id') do
   @store = Store.find(params['id'])
   @store.update(store: params['store'])
+
+  @store_brands = @store.brands
+  @brands = Brand.all
   erb(:store_edit)
 end
 
@@ -34,6 +40,16 @@ delete('/store/:id') do
   @store = Store.find(params['id'])
   @store.destroy()
   redirect('/')
+end
+
+patch('/store/:id') do
+  @store = Store.find(params['id'])
+  @store.brands.push(Brand.find(params['brand_id']))
+
+  @store_brands = @store.brands
+  @stores = Store.all
+  id = params['id']
+  redirect('/store/' + params['id'])
 end
 
 get('/brand') do
