@@ -1,0 +1,15 @@
+<h3>Oops there were some errors:</h3>
+<ul>
+  <% if @new_store %>
+  <% @new_store.errors().full_messages().each() do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  <% end %>
+
+  <% if @new_brand %>
+  <% @new_brand.errors().full_messages().each() do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  <% end %>
+
+</ul>

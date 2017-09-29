@@ -3,6 +3,9 @@ class Brand < ActiveRecord::Base
   has_many :shoes, through: :fronts
   has_many :stores, through: :fronts
 
+  validates(:brand, {:presence => true})
+  validates(:price, {:presence => true})
+
   before_save(:upcase_name)
 private
 

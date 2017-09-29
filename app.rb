@@ -14,9 +14,13 @@ get('/store') do
 end
 
 post('/store') do
-  Store.create(store: params['store'])
+  @new_store = Store.new(store: params['store'])
   @stores = Store.all
-  erb(:store)
+  if @new_store.save()
+    erb(:store)
+  else
+    erb(:error)
+  end
 end
 
 get('/store/:id') do
@@ -58,10 +62,13 @@ get('/brand') do
 end
 
 post('/brand') do
-  new_brand = Brand.new(brand: params['brand'], price: params['price'])
-  new_brand.save
+  @new_brand = Brand.new(brand: params['brand'], price: params['price'])
   @brands = Brand.all
-  erb(:brand)
+  if @new_brand.save()
+    erb(:brand)
+  else
+    erb(:error)
+  end
 end
 
 get('/brand/:id') do
